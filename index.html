@@ -80,7 +80,7 @@
 					new THREE.TorusGeometry( 0.2, 0.04, 64, 32 )
 				];
 
-				textMesh = addText("Zhenia")
+				textMesh = addText("Zhenia",0x9C33FF)
 				scene.add(textMesh)
 				textMesh.position.y = .3
 
@@ -165,12 +165,12 @@
 
 			}
 
-			function addText(text) {
+			function addText(text,color) {
 
 				const geometry = new THREE.BufferGeometry();
 				geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( [], 3 ) );
 
-				const meshMaterial = new THREE.MeshPhongMaterial( { color: 0x156289, emissive: 0x072534, side: THREE.DoubleSide, flatShading: true } );
+				const meshMaterial = new THREE.MeshPhongMaterial( { color: color, emissive: 0x072534, side: THREE.DoubleSide, flatShading: true } );
 
 				const textMesh = new THREE.Mesh( geometry, meshMaterial )
 				textMesh.position.z = -2
@@ -309,6 +309,7 @@
 
 				intersectObjects( controller1 );
 				intersectObjects( controller2 );
+				textMesh.rotation.y += 0.005;
 
 				renderer.render( scene, camera );
 
